@@ -48,7 +48,7 @@ class BlaButton extends StatelessWidget {
                   )
                 : SizedBox.shrink(),
             SizedBox(
-              width: 10,
+              width: 12,
             ),
             Text(
               text,
