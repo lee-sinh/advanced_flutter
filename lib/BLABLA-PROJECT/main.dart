@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:week_3_blabla_project/BLABLA-PROJECT/widgets/actions/bla_button.dart';
+import 'package:week_3_blabla_project/BLABLA-PROJECT/screens/ride_pref/widgets/ride_pref_form.dart';
 // import 'widgets/actions/bla_button.dart';
 // import 'screens/ride_pref/ride_pref_screen.dart';
 import 'theme/theme.dart';
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: appTheme,
-      home: Scaffold(body: BlaButton(text: '', onPressed: () {  },)),
+      home: Scaffold(body: RidePrefForm()),
     );
   }
 }
