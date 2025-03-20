@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
+import 'package:week_3_blabla_project/W6-ASYNC&NET/EX-1-START-CODE/provider/courses_provider.dart';
 import '../models/course.dart';
-
-const Color mainColor = Colors.blue;
+import '../theme/theme.dart';
 
 class CourseScoreForm extends StatefulWidget {
-  const CourseScoreForm({super.key});
+  const CourseScoreForm({super.key, required this.course});
+  final Course course; 
 
   @override
-  State<CourseScoreForm> createState() {
-    return _CourseScoreFormState();
-  }
+  State<CourseScoreForm> createState() => _CourseScoreFormState();
 }
-
 class _CourseScoreFormState extends State<CourseScoreForm> {
   final _formKey = GlobalKey<FormState>();
 
@@ -31,12 +29,16 @@ class _CourseScoreFormState extends State<CourseScoreForm> {
 
     if (isValid) {
       _formKey.currentState!.save();
-      Navigator.of(
-        context,
-      ).pop(CourseScore(studentName: _enteredName, studenScore: _enteredScore));
+      // Navigator.of(context).pop(
+      //   CourseScore(studentName: _enteredName, studentScore: _enteredScore),
+      // );
+      Provider.of<CourseProvider>(
+                    context,
+                    listen: false,
+                  ).addScore(widget.course.name, CourseScore(studentName: _enteredName, studentScore: _enteredScore));
+                  Navigator.of(context).pop();
     }
   }
-
   String? validateName(String? value) {
     if (value == null ||
         value.isEmpty ||
@@ -57,7 +59,6 @@ class _CourseScoreFormState extends State<CourseScoreForm> {
     }
     return null;
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
